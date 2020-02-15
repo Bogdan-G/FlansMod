@@ -193,7 +193,7 @@ public class GuiDriveableCrafting extends GuiScreen
 							//Get the stack in each slot
 							ItemStack stackInSlot = temporaryInventory.getStackInSlot(n);
 							//If the stack is what we want
-							if(stackInSlot != null && stackInSlot.getItem() == recipeStack.getItem() && stackInSlot.getItemDamage() == recipeStack.getItemDamage())
+							if(stackInSlot != null && recipeStack != null && stackInSlot.getItem() == recipeStack.getItem() && stackInSlot.getItemDamage() == recipeStack.getItemDamage())
 							{
 								//Work out the amount to take from the stack
 								int amountFound = Math.min(stackInSlot.stackSize, recipeStack.stackSize - totalAmountFound);
@@ -212,7 +212,7 @@ public class GuiDriveableCrafting extends GuiScreen
 							}
 						}
 						//If we didn't find enough, give the stack a red outline
-						if(totalAmountFound < recipeStack.stackSize)
+						if(recipeStack != null && totalAmountFound < recipeStack.stackSize)
 						{
 							mc.renderEngine.bindTexture(texture);
 							drawTexturedModalRect(guiOriginX + 8 + c * 18, guiOriginY + 138 + r * 18, 195, 11, 16, 16);
